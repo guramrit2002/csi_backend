@@ -32,6 +32,7 @@ TYPE_HEAD = (
 class Team(models.Model):
     
     type_member     = models.CharField(choices = TYPE,max_length= 20,null = False)
+    display_img     = models.ImageField(upload_to='Member_images',default=None)
     name            = models.CharField(max_length=50,null=False)
     linkdin         = models.CharField(max_length=50) #hyper link
     About           = models.TextField(null=False)

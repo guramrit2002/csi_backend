@@ -29,10 +29,15 @@ TYPE_HEAD = (
     ('Sub-Head','Sub-Head')
 )
 
+Event_Category = (
+    ('Tech','Tech'),
+    ('Non-Tech','Non-Tech')
+)
+
 class Team(models.Model):
     
     type_member     = models.CharField(choices = TYPE,max_length= 20,null = False)
-    display_img     = models.ImageField(upload_to='Member_images',default=None)
+    imgage_key      = models.CharField(max_length=15,default=None)
     name            = models.CharField(max_length=50,null=False)
     linkdin         = models.CharField(max_length=50) #hyper link
     About           = models.TextField(null=False)
@@ -46,7 +51,6 @@ class Sig(models.Model):
     name            = models.CharField(max_length=50, primary_key=True, unique=True,null=False)
     Description     = models.TextField(null=False)
     Syllabus        = models.CharField(max_length=50) #hyper link
-    Sig_logo        = models.ImageField(default = None,upload_to='Sig_logos')
     Head            = models.CharField(max_length=100,unique=True,null=False)
     subhead         = models.CharField(max_length=100,unique=True,null=True)
     
@@ -62,6 +66,7 @@ class Event(models.Model):
     reg_link    = models.CharField(max_length=50)  #hyper link
     Poster_link = models.CharField(max_length=50) #hyper link
     contact_no  = models.CharField(max_length=15) 
+    category    = models.CharField(max_length=8,choices=Event_Category,default=None,null=False)
     
     def __str__(self):
         return self.name
